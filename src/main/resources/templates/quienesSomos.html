@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiénes Somos - Hospital</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Asegúrate de que este enlace apunte a tu archivo CSS -->
+</head>
+<body>
+<header>
+    <nav>
+      <ul>
+        <li>
+          <a th:href="@{/index}">
+            <img class="logo" src="https://th.bing.com/th/id/OIP.T9FgtmWGeb3g7J4KZPWgJAHaHa?rs=1&pid=ImgDetMain" alt="Logo">
+          </a>
+        </li>
+        <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+        <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+        <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+        <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+        <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+        <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+        <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+        <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+        <li><a th:href="@{/reportes}">Reportes</a></li>
+        <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+      </ul>
+    </nav>
+  <h1>Hospital ABC</h1>
+  <h2>Quiénes Somos</h2>
+</header>
+
+<div class="container">
+  <section class="mission">
+    <h2>Nuestra Misión</h2>
+    <p>Proporcionar atención médica de alta calidad y accesible para todos los pacientes, promoviendo la salud y el bienestar a través de un servicio compasivo y profesional.</p>
+  </section>
+
+  <section class="vision">
+    <h2>Nuestra Visión</h2>
+    <p>Ser el hospital líder en atención médica, reconocido por la excelencia en el cuidado de la salud, la innovación y el compromiso con la comunidad.</p>
+  </section>
+
+  <section class="values">
+    <h2>Nuetros Valores</h2>
+    <ul>
+      <li>Compasión</li>
+      <li>Respeto</li>
+      <li>Integridad</li>
+      <li>Excelencia</li>
+      <li>Trabajo en equipo</li>
+    </ul>
+  </section>
+
+  <section class="about">
+    <h2>Sobre Nosotros</h2>
+    <p>El Hospital ABC fue fundado en 2000 con el objetivo de ofrecer servicios médicos de calidad a nuestra comunidad. Contamos con un equipo de profesionales altamente capacitados y tecnología avanzada para garantizar la mejor atención posible.</p>
+    <p>Nos enorgullece nuestra dedicación a la investigación y la educación médica, asegurando que nuestros pacientes reciban los tratamientos más innovadores y efectivos disponibles.</p>
+  </section>
+</div>
+</body>
+</html>

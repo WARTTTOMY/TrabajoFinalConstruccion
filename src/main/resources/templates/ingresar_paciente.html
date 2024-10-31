@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ingresar Paciente</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+            <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+            <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+            <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+            <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+            <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+            <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+            <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+            <li><a th:href="@{/reportes}">Reportes</a></li>
+            <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+        </ul>
+    </nav>
+</header>
+<h1>Ingresar Paciente</h1>
+<form th:action="@{/ingresar_paciente}" th:object="${ingresoPaciente}" method="post">
+    <label for="pacienteId">ID del Paciente:</label>
+    <input type="text" id="pacienteId" th:field="*{paciente.id}" required/><br/>
+
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" id="ciudad" th:field="*{ciudad}" required/><br/>
+
+    <label for="motivo">Motivo:</label>
+    <input type="text" id="motivo" th:field="*{motivo}" required/><br/>
+
+    <label for="tieneAcompanante">Tiene Acompañante:</label>
+    <input type="checkbox" id="tieneAcompanante" th:field="*{tieneAcompañante}"/><br/>
+
+    <button type="submit">Ingresar</button>
+    <button onclick="window.location.href='/index'">Regresar al Menú Principal</button>
+</form>
+
+<!-- Sección para mostrar el mensaje de error -->
+<div th:if="${errorMessage}" style="color: red;">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+</body>
+</html>

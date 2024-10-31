@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Pacientes y Empleados</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+            <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+            <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+            <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+            <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+            <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+            <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+            <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+            <li><a th:href="@{/reportes}">Reportes</a></li>
+            <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+        </ul>
+    </nav>
+</header>
+<h2>Lista de Pacientes</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>EPS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="paciente : ${pacientes}">
+        <td th:text="${paciente.id}"></td>
+        <td th:text="${paciente.nomPaciente}"></td>
+        <td th:text="${paciente.apePaciente}"></td>
+        <td th:text="${paciente.edad_paciente}"></td>
+        <td th:text="${paciente.direccion_paciente}"></td>
+        <td th:text="${paciente.telefono_paciente}"></td>
+        <td th:text="${paciente.eps_paciente}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Lista de Empleados</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Edad</th>
+        <th>Teléfono</th>
+        <th>Fecha de Nacimiento</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empleado : ${empleados}">
+        <td th:text="${empleado.id}"></td>
+        <td th:text="${empleado.nombreEmpleado}"></td>
+        <td th:text="${empleado.apellidoEmpleado}"></td>
+        <td th:text="${empleado.edad_empleado}"></td>
+        <td th:text="${empleado.telefono_empleado}"></td>
+        <td th:text="${empleado.fecha_nacimiento_empleado}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Lista de articulos</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Habitación</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="articulo : ${articulos}">
+        <td th:text="${articulo.id}"></td>
+        <td th:text="${articulo.nombre}"></td>
+        <td th:text="${articulo.cantidad}"></td>
+        <td th:text="${articulo.descripcion}"></td>
+        <td th:text="${articulo.habitacion}"></td>
+
+    </tr>
+    </tbody>
+</table>
+<h2>Lista de Citas</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Nombre del Empleado</th>
+        <th>Nombre del Paciente</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cita : ${citas}">
+        <td th:text="${cita.id}"></td>
+        <td th:text="${cita.fecha}"></td>
+        <td th:text="${cita.hora}"></td>
+        <td th:text="${cita.funcionario.nombreEmpleado}"></td>
+        <td th:text="${cita.paciente.nomPaciente}"></td>
+    </tr>
+    </tbody>
+</table>
+<h2>Lista de Habitaciones</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Tipo de Habitacion</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="habitacion : ${habitaciones}">
+        <td th:text="${habitacion.id}"></td>
+        <td th:text="${habitacion.tipo_habitacion}"></td>
+</table>
+
+<br>
+<button onclick="window.location.href='/index'">Regresar al Menú Principal</button>
+</body>
+</html>

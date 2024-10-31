@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Employee</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a th:href="@{/index}">
+          <img class="logo" src="https://th.bing.com/th/id/OIP.T9FgtmWGeb3g7J4KZPWgJAHaHa?rs=1&pid=ImgDetMain" alt="Logo">
+        </a>
+      </li>
+      <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+      <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+      <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+      <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+      <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+      <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+      <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+      <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+      <li><a th:href="@{/reportes}">Reportes</a></li>
+      <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+    </ul>
+  </nav>
+</header>
+<h1 th:text="${empleado.id != null} ? 'Editar Empleado' : 'Registrar Empleado'"></h1>
+
+<!-- Formulario de búsqueda -->
+<form th:action="@{/empleados/buscar}" method="get">
+  <div>
+    <label for="buscarId">Buscar por ID:</label>
+    <input type="number" id="buscarId" name="id" required>
+    <button type="submit">Buscar</button>
+  </div>
+</form>
+
+<form th:action="${empleado.id != null} ? @{/empleados/actualizar/{id}(id=${empleado.id})} : @{/empleados}" method="post">
+  <div>
+    <label for="nombreEmpleado">Nombre:</label>
+    <input type="text" id="nombreEmpleado" name="nombreEmpleado" th:value="${empleado.nombreEmpleado}" required>
+  </div>
+  <div>
+    <label for="apellidoEmpleado">Apellido:</label>
+    <input type="text" id="apellidoEmpleado" name="apellidoEmpleado" th:value="${empleado.apellidoEmpleado}" required>
+  </div>
+  <div>
+    <label for="edad_empleado">Edad:</label>
+    <input type="number" id="edad_empleado" name="edad_empleado" th:value="${empleado.edad_empleado}" required>
+  </div>
+  <div>
+    <label for="telefono_empleado">Teléfono:</label>
+    <input type="text" id="telefono_empleado" name="telefono_empleado" th:value="${empleado.telefono_empleado}" required>
+  </div>
+  <div>
+    <label for="fecha_nacimiento_empleado">Fecha de Nacimiento:</label>
+    <input type="date" id="fecha_nacimiento_empleado" name="fecha_nacimiento_empleado" th:value="${empleado.fecha_nacimiento_empleado}" required>
+  </div>
+  <div>
+    <label for="id">Número de Cédula:</label>
+    <input type="text" id="id" name="id" th:value="${empleado.id}" required>
+  </div>
+  <div>
+    <button type="submit" th:text="${empleado.id != null} ? 'Actualizar' : 'Registrar'"></button>
+  </div>
+</form>
+<br>
+<button onclick="window.location.href='/empleados/listaEmpleados'">Ver Lista de Empleados</button>
+<button onclick="window.location.href='/index'">Regresar al Menú Principal</button>
+<div th:if="${errorMessage != null}" th:text="${errorMessage}" style="color: red;"></div>
+</body>
+</html>

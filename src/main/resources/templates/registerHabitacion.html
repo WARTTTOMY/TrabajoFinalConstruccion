@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Patient</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li>
+        <a th:href="@{/index}">
+          <img class="logo" src="https://th.bing.com/th/id/OIP.T9FgtmWGeb3g7J4KZPWgJAHaHa?rs=1&pid=ImgDetMain" alt="Logo">
+        </a>
+      </li>
+      <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+      <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+      <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+      <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+      <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+      <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+      <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+      <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+      <li><a th:href="@{/reportes}">Reportes</a></li>
+      <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+    </ul>
+  </nav>
+</header>
+
+<h1>Register</h1>
+<form action="/registerHabitacion" method="post">
+
+  <div>
+    <label for="id">Numero Habitacion:</label>
+    <input type="number" id="id" name="id" required>
+  </div>
+  <div>
+    <label for="tipo_habitacion">Tipo Habitacion:</label>
+    <select id="tipo_habitacion" name="tipo_habitacion" required>
+      <option value="Individual">Individual</option>
+      <option value="Compartida">Compartida</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Register</button>
+    <button onclick="window.location.href='/index'">Regresar al Menú Principal</button>
+  </div>
+</form>
+</body>
+</html>

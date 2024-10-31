@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Artículos</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li>
+                <a th:href="@{/index}">
+                    <img class="logo" src="https://th.bing.com/th/id/OIP.T9FgtmWGeb3g7J4KZPWgJAHaHa?rs=1&pid=ImgDetMain" alt="Logo">
+                </a>
+            </li>
+            <li><a th:href="@{/registerPatient}">Gestión de Pacientes</a></li>
+            <li><a th:href="@{/register}">Gestión de Empleados</a></li>
+            <li><a th:href="@{/registerHabitacion}">Gestión de Habitaciones</a></li>
+            <li><a th:href="@{/citas}">Gestión de Citas</a></li>
+            <li><a th:href="@{/articulos/ingresar}">Gestion de articulos</a> </li>
+            <li><a th:href="@{/ingresar_paciente}">Registro de Ingreso</a></li>
+            <li><a th:href="@{/servicio/asignar}">Gestión de Servicios</a></li>
+            <li><a th:href="@{/salidasPacientes/registrar}">Registro de Salida</a></li>
+            <li><a th:href="@{/reportes}">Reportes</a></li>
+            <li><a th:href="@{/quienesSomos}">Quiénes Somos</a></li>
+        </ul>
+    </nav>
+</header>
+<h2>Lista de Artículos</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Cantidad</th>
+        <th>Descripción</th>
+        <th>Habitación</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="articulo : ${articulos}">
+        <td th:text="${articulo.id}"></td>
+        <td th:text="${articulo.nombre}"></td>
+        <td th:text="${articulo.cantidad}"></td>
+        <td th:text="${articulo.descripcion}"></td>
+        <td th:text="${articulo.habitacion != null ? articulo.habitacion.id : 'N/A'}"></td>
+        <td>
+            <a th:href="@{/articulos/editar/{id}(id=${articulo.id})}">Editar</a>
+        </td>
+        <td>
+            <form th:action="@{/articulos/eliminar/{id}(id=${articulo.id})}" method="post" style="display:inline;">
+                <button type="submit" onclick="return confirm('¿Desea eliminar el artículo?');">Eliminar</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<button onclick="window.location.href='/index'">Regresar al Menú Principal</button>
+</body>
+</html>
